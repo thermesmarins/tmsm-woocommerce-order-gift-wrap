@@ -1,56 +1,64 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Gift Packaging\n"
-"POT-Creation-Date: 2016-10-18 10:07+0200\n"
-"PO-Revision-Date: 2016-10-18 11:30+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2017-11-27 11:56+0100\n"
+"PO-Revision-Date: 2016-01-26 10:32+0100\n"
+"Last-Translator: Fouad Vollmer Werbeagentur <info@fouadvollmer.de>\n"
 "Language-Team: Johannes Grandy <info@johannesgrandy.com>\n"
-"Language: de\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../woo_gift_options.php:46
-msgid "Send this order packaged as gift"
-msgstr "Diese Bestellung als Geschenk verpackt versenden"
+#: ../tmsm-woocommerce-order-gift-wrap.php:37
+#, php-format
+msgid "Gift wrap this order for %s?"
+msgstr ""
 
-#: ../woo_gift_options.php:88 ../woo_gift_options.php:131
-#: ../woo_gift_options.php:153 ../woo_gift_options.php:176
-msgid "Gift packaging"
-msgstr "Geschenkverpackung"
+#: ../tmsm-woocommerce-order-gift-wrap.php:51
+msgid "Order gift wrap cost"
+msgstr ""
 
-#: ../woo_gift_options.php:123 ../woo_gift_options.php:145
-#: ../woo_gift_options.php:168
+#: ../tmsm-woocommerce-order-gift-wrap.php:57
+msgid "Gift wrap message"
+msgstr ""
+
+#: ../tmsm-woocommerce-order-gift-wrap.php:59
+msgid "Note: <code>{price}</code> will be replaced with the gift wrap cost."
+msgstr ""
+
+#: ../tmsm-woocommerce-order-gift-wrap.php:61
+msgid "The checkbox and label shown to the user on the frontend."
+msgstr ""
+
+#: ../tmsm-woocommerce-order-gift-wrap.php:145
+msgid "Order gift wrap"
+msgstr ""
+
+#: ../tmsm-woocommerce-order-gift-wrap.php:171
+#: ../tmsm-woocommerce-order-gift-wrap.php:188
+#: ../tmsm-woocommerce-order-gift-wrap.php:205
 msgid "Yes"
-msgstr "Ja"
+msgstr ""
 
-#: ../woo_gift_options.php:127 ../woo_gift_options.php:149
-#: ../woo_gift_options.php:172
+#: ../tmsm-woocommerce-order-gift-wrap.php:171
+#: ../tmsm-woocommerce-order-gift-wrap.php:188
+#: ../tmsm-woocommerce-order-gift-wrap.php:205
 msgid "No"
-msgstr "Nein"
+msgstr ""
 
-#: ../woo_gift_options.php:190
-msgid "Gift packaging cost"
-msgstr "Kosten für die Geschenkverpackung"
-
-#: ../woo_gift_options.php:191
-msgid "Set here the cost for gift packaging"
-msgstr "Gib hier die Kosten für die Geschenkverpackung an"
-
-#~ msgid "Send this order as gift"
-#~ msgstr "Diese Bestellung als Geschenk versenden"
-
-#~ msgid "Gift packing"
-#~ msgstr "Geschenkverpackung"
-
-#~ msgid "Gift packing cost"
-#~ msgstr "Geschenkverpackungs-Kosten"
+#: ../tmsm-woocommerce-order-gift-wrap.php:173
+#: ../tmsm-woocommerce-order-gift-wrap.php:190
+#: ../tmsm-woocommerce-order-gift-wrap.php:207
+msgid "Order Gift Wrap"
+msgstr ""
 
 #~ msgid "date_after"
 #~ msgstr " ago"

@@ -10,7 +10,7 @@ Requires at least: 4.5
 Tested up to: 4.8
 Text Domain: tmsm-woocommerce-order-gift-wrap
 Domain Path: /languages/
-Github Plugin URI: https://github.com/thermesmarins/tmsm-woocommerce-product-gift-wrap
+Github Plugin URI: https://github.com/thermesmarins/tmsm-woocommerce-order-gift-wrap
 Github Branch: master
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -25,7 +25,7 @@ load_plugin_textdomain( 'tmsm-woocommerce-order-gift-wrap', false, plugin_basena
 /**
  * TMSM_WooCommerce_Product_Gift_Wrap class.
  */
-class TMSM_WooCommerce_Product_Gift_Wrap {
+class TMSM_WooCommerce_Order_Gift_Wrap {
 
 	/**
 	 * TMSM_WooCommerce_Product_Gift_Wrap constructor.
@@ -48,23 +48,22 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 		// Init settings
 		$this->settings = array(
 			array(
-				'name' 		=> __( 'Default Gift Wrap Cost', 'tmsm-woocommerce-order-gift-wrap' ),
-				'desc' 		=> __( 'The cost of gift wrap unless overridden per-product.', 'tmsm-woocommerce-order-gift-wrap' ),
+				'name' 		=> __( 'Order gift wrap cost', 'tmsm-woocommerce-order-gift-wrap' ),
 				'id' 		=> 'order_gift_wrap_cost',
 				'type' 		=> 'text',
 				'desc_tip'  => true
 			),
 			array(
-				'name' 		=> __( 'Gift Wrap Message', 'tmsm-woocommerce-order-gift-wrap' ),
+				'name' 		=> __( 'Gift wrap message', 'tmsm-woocommerce-order-gift-wrap' ),
 				'id' 		=> 'order_gift_wrap_message',
-				'desc' 		=> __( 'Note: <code>{checkbox}</code> will be replaced with a checkbox and <code>{price}</code> will be replaced with the gift wrap cost.', 'tmsm-woocommerce-product-gift-wrap' ),
+				'desc' 		=> __( 'Note: <code>{price}</code> will be replaced with the gift wrap cost.', 'tmsm-woocommerce-order-gift-wrap' ),
 				'type' 		=> 'text',
 				'desc_tip'  => __( 'The checkbox and label shown to the user on the frontend.', 'tmsm-woocommerce-order-gift-wrap' )
 			),
 		);
 
 		$tmsm_woocommerce_order_gift_wrap_field_hook = apply_filters( 'tmsm_woocommerce_order_gift_wrap_field', 'woocommerce_after_checkout_billing_form' );
-		add_action( $tmsm_woocommerce_order_gift_wrap_field_hook, 'order_gift_wrap_field' );
+		add_action( $tmsm_woocommerce_order_gift_wrap_field_hook, array( $this, 'order_gift_wrap_field' ));
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
@@ -78,10 +77,9 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 
 		add_action( 'woocommerce_email_after_order_table', 'email_note' );
 
-
 		// Admin
-		add_action( 'woocommerce_settings_general_options_end', array( $this, 'admin_settings' ) );
-		add_action( 'woocommerce_update_options_general', array( $this, 'save_admin_settings' ) );
+		add_action( 'woocommerce_settings_checkout_process_options', array( $this, 'admin_settings' ) );
+		add_action( 'woocommerce_update_options_checkout', array( $this, 'save_admin_settings' ) );
 	}
 
 	/**
@@ -119,16 +117,18 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 	 *
 	 * @param $checkout
 	 */
-	function order_gift_wrap_field( $checkout ) {
+	public function order_gift_wrap_field( $checkout ) {
 
 		do_action( 'tmsm_woocommerce_order_gift_wrap_field_before' );
 
 		$label = $this->order_gift_wrap_message;
 		$value = $this->order_gift_wrap_cost;
+		$label = str_replace('{price}', ($value != 0?'+'.wc_price($value):__( 'Free', 'tmsm-woocommerce-order-gift-wrap' )), $label);
 
-		woocommerce_form_field( 'order-gift-wrap-checkbox', array(
+
+		woocommerce_form_field( 'order-gift-wrap', array(
 			'type'  => 'checkbox',
-			'class' => array( 'form-row-wide' ),
+			'class' => array( 'form-row-wide checkbox' ),
 			'label' => $label,
 		), $value );
 
@@ -139,12 +139,13 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 	/**
 	 * Calculates cart fee
 	 */
-	function cart_calculate_fees() {
+	public function cart_calculate_fees() {
 		global $woocommerce;
 		if ( $_POST ):
 			parse_str( $_POST['post_data'], $data );
-			if ( ( $data['order-gift-wrap-checkbox'] OR $_POST['order-gift-wrap-checkbox'] ) AND ! empty( $this->order_gift_wrap_cost ) ):
-				WC()->cart->add_fee( __( 'Order Gift Wrap', 'tmsm-woocommerce-product-gift-wrap' ), $this->order_gift_wrap_cost );
+		print_r($data);
+			if ( ( $data['order-gift-wrap'] OR $_POST['order-gift-wrap'] ) AND ! empty( $this->order_gift_wrap_cost ) ):
+				WC()->cart->add_fee( __( 'Order gift wrap', 'tmsm-woocommerce-order-gift-wrap' ), $this->order_gift_wrap_cost );
 			endif;
 		endif;
 	}
@@ -155,8 +156,8 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 	 * @param $order_id
 	 */
 	function update_order_meta( $order_id ) {
-		if ( $_POST['order-gift-wrap-checkbox'] ):
-			$wc_gift_packaging = isset( $_POST['order-gift-wrap-checkbox'] ) ? 1 : 0;
+		if ( $_POST['order-gift-wrap'] ):
+			$wc_gift_packaging = isset( $_POST['order-gift-wrap'] ) ? 1 : 0;
 			update_post_meta( $order_id, 'order-gift-wrap', $wc_gift_packaging );
 		endif;
 	}
@@ -170,9 +171,9 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 
 		$status = get_post_meta( $order->get_order_number(), 'order-gift-wrap', true );
 
-		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-product-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-product-gift-wrap' );
+		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-order-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-order-gift-wrap' );
 
-		$note = '<p><strong>' . __( 'Order Gift Wrap', 'tmsm-woocommerce-product-gift-wrap' ) . ':</strong> ' . $has_packaging . '</p>';
+		$note = '<p><strong>' . __( 'Order Gift Wrap', 'tmsm-woocommerce-order-gift-wrap' ) . ':</strong> ' . $has_packaging . '</p>';
 		$note = apply_filters( 'tmsm_woocommerce_order_gift_wrap_admin_note', $note, $status );
 		echo $note;
 
@@ -187,9 +188,9 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 
 		$status = get_post_meta( $order->get_order_number(), 'order-gift-wrap', true );
 
-		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-product-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-product-gift-wrap' );
+		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-order-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-order-gift-wrap' );
 
-		$note = '<p><strong>' . __( 'Order Gift Wrap', 'tmsm-woocommerce-product-gift-wrap' ) . ':</strong> ' . $has_packaging . '</p>';
+		$note = '<p><strong>' . __( 'Order Gift Wrap', 'tmsm-woocommerce-order-gift-wrap' ) . ':</strong> ' . $has_packaging . '</p>';
 		$note = apply_filters( 'tmsm_woocommerce_order_gift_wrap_order_note', $note, $status );
 		echo $note;
 
@@ -204,9 +205,9 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 
 		$status = get_post_meta( $order->get_order_number(), 'order-gift-wrap', true );
 
-		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-product-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-product-gift-wrap' );
+		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-order-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-order-gift-wrap' );
 
-		$note = __( 'Order Gift Wrap', 'tmsm-woocommerce-product-gift-wrap' ) . ': ' . $has_packaging;
+		$note = __( 'Order Gift Wrap', 'tmsm-woocommerce-order-gift-wrap' ) . ': ' . $has_packaging;
 		$note = apply_filters( 'tmsm_woocommerce_order_gift_wrap_email_note', $note, $status );
 		echo $note;
 
@@ -215,5 +216,5 @@ class TMSM_WooCommerce_Product_Gift_Wrap {
 }
 
 
-new TMSM_WooCommerce_Product_Gift_Wrap();
+new TMSM_WooCommerce_Order_Gift_Wrap();
 
