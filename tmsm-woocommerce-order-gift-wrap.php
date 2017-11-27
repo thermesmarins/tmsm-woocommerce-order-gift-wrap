@@ -67,19 +67,18 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-		add_action( 'woocommerce_cart_calculate_fees', 'cart_calculate_fees' );
-
-		add_action( 'woocommerce_checkout_update_order_meta', 'update_order_meta' );
-
-		add_action( 'woocommerce_admin_order_data_after_billing_address', 'admin_note', 10, 1 );
-
-		add_action( 'woocommerce_order_details_after_order_table', 'order_note', 10, 1 );
-
-		add_action( 'woocommerce_email_after_order_table', 'email_note' );
+		// Checkout/Emails
+		add_action( 'woocommerce_cart_calculate_fees',  array( $this, 'cart_calculate_fees') );
+		add_action( 'woocommerce_checkout_update_order_meta',  array( $this, 'update_order_meta') );
+		add_action( 'woocommerce_admin_order_data_after_billing_address',  array( $this, 'admin_note', 10, 1) );
+		add_action( 'woocommerce_order_details_after_order_table',  array( $this, 'order_note', 10, 1) );
+		add_action( 'woocommerce_email_after_order_table',  array( $this, 'email_note') );
 
 		// Admin
 		add_action( 'woocommerce_settings_checkout_process_options', array( $this, 'admin_settings' ) );
 		add_action( 'woocommerce_update_options_checkout', array( $this, 'save_admin_settings' ) );
+
+
 	}
 
 	/**
@@ -140,10 +139,8 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	 * Calculates cart fee
 	 */
 	public function cart_calculate_fees() {
-		global $woocommerce;
 		if ( $_POST ):
 			parse_str( $_POST['post_data'], $data );
-		print_r($data);
 			if ( ( $data['order-gift-wrap'] OR $_POST['order-gift-wrap'] ) AND ! empty( $this->order_gift_wrap_cost ) ):
 				WC()->cart->add_fee( __( 'Order gift wrap', 'tmsm-woocommerce-order-gift-wrap' ), $this->order_gift_wrap_cost );
 			endif;
