@@ -1,5 +1,6 @@
 ### 1.0.1: November 27th, 2017
 * Project refactoring
+* Debugging
 
 ### 1.0.0: November 22th, 2017
 * Project init

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM WooCommerce Order Gift Wrap\n"
-"POT-Creation-Date: 2017-11-27 11:57+0100\n"
-"PO-Revision-Date: 2017-11-27 11:57+0100\n"
+"POT-Creation-Date: 2017-11-27 15:58+0100\n"
+"PO-Revision-Date: 2017-11-27 16:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: https://github.com/thermesmarins/\n"
 "Language: fr\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: ../tmsm-woocommerce-order-gift-wrap.php:37
 #, php-format
 msgid "Gift wrap this order for %s?"
-msgstr "Emballage cadeau pour cette commande pour %s ?"
+msgstr "Emballage papier-cadeau pour cette commande pour %s ?"
 
 #: ../tmsm-woocommerce-order-gift-wrap.php:51
 msgid "Order gift wrap cost"
@@ -37,9 +37,13 @@ msgstr "Note : <code>{price}</code> sera remplacé par le coût de l'emballage c
 msgid "The checkbox and label shown to the user on the frontend."
 msgstr "La case à cocher et le libellé seront affichés au public."
 
+#: ../tmsm-woocommerce-order-gift-wrap.php:125
+msgid "Free"
+msgstr "Gratuit"
+
 #: ../tmsm-woocommerce-order-gift-wrap.php:145
 msgid "Order gift wrap"
-msgstr "Coût de l'emballage cadeau"
+msgstr "Emballer la commande dans un papier-cadeau"
 
 #: ../tmsm-woocommerce-order-gift-wrap.php:171
 #: ../tmsm-woocommerce-order-gift-wrap.php:188
@@ -57,7 +61,7 @@ msgstr "Non"
 #: ../tmsm-woocommerce-order-gift-wrap.php:190
 #: ../tmsm-woocommerce-order-gift-wrap.php:207
 msgid "Order Gift Wrap"
-msgstr ""
+msgstr "Emballage papier-cadeau"
 
 #~ msgid "date_after"
 #~ msgstr " ago"
