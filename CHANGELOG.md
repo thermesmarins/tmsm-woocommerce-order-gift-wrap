@@ -1,3 +1,6 @@
+### 1.0.2: November 30th, 2017
+* Remove email notes (as fee is already added)
+
 ### 1.0.1: November 27th, 2017
 * Project refactoring
 * Debugging
