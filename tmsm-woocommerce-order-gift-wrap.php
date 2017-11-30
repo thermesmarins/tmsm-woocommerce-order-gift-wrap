@@ -69,9 +69,9 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 		// Checkout/Emails
 		add_action( 'woocommerce_cart_calculate_fees',  array( $this, 'cart_calculate_fees') );
 		add_action( 'woocommerce_checkout_update_order_meta',  array( $this, 'update_order_meta') );
-		add_action( 'woocommerce_admin_order_data_after_billing_address',  array( $this, 'admin_note', 10, 1) );
-		add_action( 'woocommerce_order_details_after_order_table',  array( $this, 'order_note', 10, 1) );
-		add_action( 'woocommerce_email_after_order_table',  array( $this, 'email_note') );
+		//add_action( 'woocommerce_admin_order_data_after_billing_address',  array( $this, 'admin_note', 10, 1) );
+		//add_action( 'woocommerce_order_details_after_order_table',  array( $this, 'order_note', 10, 1) );
+		//add_action( 'woocommerce_email_after_order_table',  array( $this, 'email_note') );
 
 		// Admin
 		add_action( 'woocommerce_settings_checkout_process_options', array( $this, 'admin_settings' ) );
