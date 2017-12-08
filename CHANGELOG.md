@@ -1,3 +1,6 @@
+### 1.0.3: December 8th, 2017
+* Display checkbox only if order needs shipping
+
 ### 1.0.2: November 30th, 2017
 * Remove email notes (as fee is already added)
 

@@ -3,7 +3,7 @@
 Plugin Name: TMSM WooCommerce Order Gift Wrap
 Plugin URI: https://github.com/thermesmarins/tmsm-woocommerce-order-gift-wrap
 Description: Enable a per-order gift wrap option on checkout page
-Version: 1.0.2
+Version: 1.0.3
 Author: Nicolas Mollet
 Author URI: http://www.nicolasmollet.com
 Requires at least: 4.5
@@ -113,25 +113,25 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	/**
 	 * Creates checkox on checkout page
 	 *
-	 * @param $checkout
+	 * @param WC_Checkout $checkout
 	 */
 	public function order_gift_wrap_field( $checkout ) {
+		if(WC()->cart->needs_shipping()){
+			do_action( 'tmsm_woocommerce_order_gift_wrap_field_before' );
 
-		do_action( 'tmsm_woocommerce_order_gift_wrap_field_before' );
-
-		$label = $this->order_gift_wrap_message;
-		$value = $this->order_gift_wrap_cost;
-		$label = str_replace('{price}', ($value != 0?'+'.wc_price($value):__( 'Free', 'tmsm-woocommerce-order-gift-wrap' )), $label);
+			$label = $this->order_gift_wrap_message;
+			$value = $this->order_gift_wrap_cost;
+			$label = str_replace('{price}', ($value != 0?'+'.wc_price($value):__( 'Free', 'tmsm-woocommerce-order-gift-wrap' )), $label);
 
 
-		woocommerce_form_field( 'order-gift-wrap', array(
-			'type'  => 'checkbox',
-			'class' => array( 'form-row-wide checkbox' ),
-			'label' => $label,
-		), $value );
+			woocommerce_form_field( 'order-gift-wrap', array(
+				'type'  => 'checkbox',
+				'class' => array( 'form-row-wide checkbox' ),
+				'label' => $label,
+			), $value );
 
-		do_action( 'tmsm_woocommerce_order_gift_wrap_field_after' );
-
+			do_action( 'tmsm_woocommerce_order_gift_wrap_field_after' );
+		}
 	}
 
 	/**
