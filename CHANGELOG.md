@@ -1,3 +1,5 @@
+* Avoid php notices
+
 ### 1.0.3: December 8th, 2017
 * Display checkbox only if order needs shipping
 
