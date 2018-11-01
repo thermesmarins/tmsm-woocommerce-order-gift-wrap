@@ -139,7 +139,7 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	 */
 	public function cart_calculate_fees() {
 		if ( $_POST ):
-			parse_str( $_POST['post_data'], $data );
+			parse_str( ( ! empty( $_POST['post_data'] ) ? $_POST['post_data'] : array() ), $data );
 			if ( ( !empty($data['order-gift-wrap']) || !empty($_POST['order-gift-wrap']) ) && ! empty( $this->order_gift_wrap_cost ) ):
 				WC()->cart->add_fee( __( 'Order gift wrap', 'tmsm-woocommerce-order-gift-wrap' ), $this->order_gift_wrap_cost );
 			endif;
