@@ -1,3 +1,4 @@
+### 1.0.4: June 26th, 2019
 * Avoid php notices
 
 ### 1.0.3: December 8th, 2017
