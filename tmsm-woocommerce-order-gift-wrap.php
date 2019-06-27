@@ -3,7 +3,7 @@
 Plugin Name: TMSM WooCommerce Order Gift Wrap
 Plugin URI: https://github.com/thermesmarins/tmsm-woocommerce-order-gift-wrap
 Description: Enable a per-order gift wrap option on checkout page
-Version: 1.0.4
+Version: 1.0.5
 Author: Nicolas Mollet
 Author URI: http://www.nicolasmollet.com
 Requires at least: 4.5
@@ -139,7 +139,7 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	 */
 	public function cart_calculate_fees() {
 		if ( $_POST ):
-			parse_str( ( ! empty( $_POST['post_data'] ) ? $_POST['post_data'] : array() ), $data );
+			parse_str( ( ! empty( $_POST['post_data'] ) ? $_POST['post_data'] : null ), $data );
 			if ( ( !empty($data['order-gift-wrap']) || !empty($_POST['order-gift-wrap']) ) && ! empty( $this->order_gift_wrap_cost ) ):
 				WC()->cart->add_fee( __( 'Order gift wrap', 'tmsm-woocommerce-order-gift-wrap' ), $this->order_gift_wrap_cost );
 			endif;
