@@ -1,3 +1,5 @@
+* Fix PHP notice
+
 ### 1.0.5: June 27th, 2019
 * Avoid php notices
 * Add license file

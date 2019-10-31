@@ -152,9 +152,8 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	 * @param $order_id
 	 */
 	function update_order_meta( $order_id ) {
-		if ( $_POST['order-gift-wrap'] ):
-			$wc_gift_packaging = isset( $_POST['order-gift-wrap'] ) ? 1 : 0;
-			update_post_meta( $order_id, 'order-gift-wrap', $wc_gift_packaging );
+		if ( isset($_POST['order-gift-wrap']) ):
+			update_post_meta( $order_id, 'order-gift-wrap', 1 );
 		endif;
 	}
 
