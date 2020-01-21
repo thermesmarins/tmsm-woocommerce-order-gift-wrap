@@ -7,7 +7,7 @@ WC Gift Packaging allows your customers to send their orders packaged as gift. F
 
 If you want multiple gift packagings and other fancy stuff this is not the plugin for you.
 
-This plugin is a fork of the [WC Gift Packaging](https://wordpress.org/plugins/wc-gift-packaging/) by [Johannes Grandy](https://gdy.rocks/), which is a fork of the [WooCommerce Gift Options Plugin](https://de.wordpress.org/plugins/woocommerce-gift-options/) by [Arpit Tambi](https://profiles.wordpress.org/aheadzen/).
+This plugin is a fork of the [WooCommerce Gift Options Plugin](https://de.wordpress.org/plugins/woocommerce-gift-options/) by [Arpit Tambi](https://profiles.wordpress.org/aheadzen/).
 
 == Author ==
 -----------

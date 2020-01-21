@@ -14,7 +14,7 @@ Github Plugin URI: https://github.com/thermesmarins/tmsm-woocommerce-order-gift-
 Github Branch: master
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Original Author: "WC Gift Packaging" plugin by Johannes Grandy http://johannesgrandy.com/, Arpit Tambi http://aheadzen.com/
+Original Author: Arpit Tambi http://aheadzen.com/
 */
 
 
