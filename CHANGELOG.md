@@ -1,4 +1,5 @@
 * Fix PHP notice
+* Removed one of the original author names as requested
 
 ### 1.0.5: June 27th, 2019
 * Avoid php notices
