@@ -1,3 +1,4 @@
+### 1.0.6: June 18th, 2021
 * Fix PHP notice
 * Removed one of the original author names as requested
 
