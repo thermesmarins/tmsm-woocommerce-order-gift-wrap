@@ -1,3 +1,4 @@
+### 1.0.7: July 22nd, 2021
 * Fix checkbox was checked by default
 
 ### 1.0.6: June 18th, 2021
