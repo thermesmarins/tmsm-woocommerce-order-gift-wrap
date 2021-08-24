@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM WooCommerce Order Gift Wrap\n"
-"POT-Creation-Date: 2021-08-24 14:06+0200\n"
-"PO-Revision-Date: 2021-08-24 14:13+0200\n"
+"POT-Creation-Date: 2021-08-24 15:00+0200\n"
+"PO-Revision-Date: 2021-08-24 15:00+0200\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: https://github.com/thermesmarins/\n"
 "Language: fr\n"
@@ -16,36 +16,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:58
+#: ../tmsm-woocommerce-order-gift-wrap.php:64
 #, php-format
 msgid "Gift wrap this order for %s?"
 msgstr "Emballage papier-cadeau pour cette commande pour %s ?"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:77
+#: ../tmsm-woocommerce-order-gift-wrap.php:83
 msgid "Order gift wrap cost"
 msgstr "Coût de l'emballage cadeau (par commande)"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:83
+#: ../tmsm-woocommerce-order-gift-wrap.php:89
 msgid "Gift wrap fee name"
 msgstr "Nom du supplément"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:85
+#: ../tmsm-woocommerce-order-gift-wrap.php:91
 msgid "Appears in emails and admin"
 msgstr "Apparaît dans les emails et dans le backoffice"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:89
+#: ../tmsm-woocommerce-order-gift-wrap.php:95
 msgid "Gift wrap question"
 msgstr "Emballage papier-cadeau pour cette commande pour {price} ?"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:91
+#: ../tmsm-woocommerce-order-gift-wrap.php:97
 msgid "Note: <code>{price}</code> will be replaced with the gift wrap cost."
 msgstr "Note : <code>{price}</code> sera remplacé par le coût de l'emballage cadeau."
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:93
+#: ../tmsm-woocommerce-order-gift-wrap.php:99
 msgid "The checkbox and label shown to the user on the frontend."
 msgstr "La case à cocher et le libellé seront affichés au public."
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:155
+#: ../tmsm-woocommerce-order-gift-wrap.php:162
 msgid "Free"
 msgstr "Gratuit"
 

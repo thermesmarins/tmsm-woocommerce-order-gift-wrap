@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM WooCommerce Order Gift Wrap\n"
-"POT-Creation-Date: 2021-08-24 14:06+0200\n"
+"POT-Creation-Date: 2021-08-24 15:00+0200\n"
 "PO-Revision-Date: 2016-01-26 10:32+0100\n"
 "Last-Translator: Fouad Vollmer Werbeagentur <info@fouadvollmer.de>\n"
 "Language-Team: https://github.com/thermesmarins\n"
@@ -17,36 +17,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:58
+#: ../tmsm-woocommerce-order-gift-wrap.php:64
 #, php-format
 msgid "Gift wrap this order for %s?"
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:77
+#: ../tmsm-woocommerce-order-gift-wrap.php:83
 msgid "Order gift wrap cost"
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:83
+#: ../tmsm-woocommerce-order-gift-wrap.php:89
 msgid "Gift wrap fee name"
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:85
+#: ../tmsm-woocommerce-order-gift-wrap.php:91
 msgid "Appears in emails and admin"
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:89
+#: ../tmsm-woocommerce-order-gift-wrap.php:95
 msgid "Gift wrap question"
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:91
+#: ../tmsm-woocommerce-order-gift-wrap.php:97
 msgid "Note: <code>{price}</code> will be replaced with the gift wrap cost."
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:93
+#: ../tmsm-woocommerce-order-gift-wrap.php:99
 msgid "The checkbox and label shown to the user on the frontend."
 msgstr ""
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:155
+#: ../tmsm-woocommerce-order-gift-wrap.php:162
 msgid "Free"
 msgstr ""
 
