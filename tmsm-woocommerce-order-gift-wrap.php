@@ -35,6 +35,13 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	private $order_gift_wrap_cost;
 
 	/**
+	 * Wrap Fee Name
+	 *
+	 * @var string
+	 */
+	private $order_gift_wrap_feename;
+
+	/**
 	 * Wrap Message
 	 *
 	 * @var string
@@ -54,15 +61,21 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 	 * @access public
 	 */
 	public function __construct() {
+		$default_feename               = _x( 'Gift wrap', 'fee name', 'tmsm-woocommerce-order-gift-wrap' );
 		$default_message               = sprintf( __( 'Gift wrap this order for %s?', 'tmsm-woocommerce-order-gift-wrap' ), '{price}' );
 		$this->order_gift_wrap_cost    = get_option( 'order_gift_wrap_cost', 0 );
+		$this->order_gift_wrap_feename = get_option( 'order_gift_wrap_feename' );
 		$this->order_gift_wrap_message = get_option( 'order_gift_wrap_message' );
 
+		if ( ! $this->order_gift_wrap_feename ) {
+			$this->order_gift_wrap_feename = $default_feename;
+		}
 		if ( ! $this->order_gift_wrap_message ) {
 			$this->order_gift_wrap_message = $default_message;
 		}
 
 		add_option( 'order_gift_wrap_cost', '0' );
+		add_option( 'order_gift_wrap_feename', $default_feename );
 		add_option( 'order_gift_wrap_message', $default_message );
 
 		// Init settings
@@ -74,7 +87,13 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 				'desc_tip' => true,
 			),
 			array(
-				'name'     => __( 'Gift wrap message', 'tmsm-woocommerce-order-gift-wrap' ),
+				'name'     => __( 'Gift wrap fee name', 'tmsm-woocommerce-order-gift-wrap' ),
+				'id'       => 'order_gift_wrap_feename',
+				'desc'     => __( 'Appears in emails and admin', 'tmsm-woocommerce-order-gift-wrap' ),
+				'type'     => 'text',
+			),
+			array(
+				'name'     => __( 'Gift wrap question', 'tmsm-woocommerce-order-gift-wrap' ),
 				'id'       => 'order_gift_wrap_message',
 				'desc'     => __( 'Note: <code>{price}</code> will be replaced with the gift wrap cost.', 'tmsm-woocommerce-order-gift-wrap' ),
 				'type'     => 'text',
@@ -91,14 +110,11 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 		// Checkout/Emails
 		add_action( 'woocommerce_cart_calculate_fees', array( $this, 'cart_calculate_fees' ) );
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta' ) );
-		//add_action( 'woocommerce_admin_order_data_after_billing_address',  array( $this, 'admin_note', 10, 1) );
-		//add_action( 'woocommerce_order_details_after_order_table',  array( $this, 'order_note', 10, 1) );
-		//add_action( 'woocommerce_email_after_order_table',  array( $this, 'email_note') );
 
 		// Admin
 		add_action( 'woocommerce_settings_checkout_process_options', array( $this, 'admin_settings' ) );
 		add_action( 'woocommerce_update_options_checkout', array( $this, 'save_admin_settings' ) );
-
+		add_action( 'woocommerce_update_options_advanced', array( $this, 'save_admin_settings' ) );
 
 	}
 
@@ -163,7 +179,7 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 		if ( $_POST ):
 			parse_str( ( ! empty( $_POST['post_data'] ) ? $_POST['post_data'] : null ), $data );
 			if ( ( ! empty( $data['order-gift-wrap'] ) || ! empty( $_POST['order-gift-wrap'] ) ) && ! empty( $this->order_gift_wrap_cost ) ):
-				WC()->cart->add_fee( __( 'Order gift wrap', 'tmsm-woocommerce-order-gift-wrap' ), $this->order_gift_wrap_cost );
+				WC()->cart->add_fee( get_option( 'order_gift_wrap_feename' ), $this->order_gift_wrap_cost );
 			endif;
 		endif;
 	}
@@ -178,57 +194,6 @@ class TMSM_WooCommerce_Order_Gift_Wrap {
 			$wc_gift_packaging = isset( $_POST['order-gift-wrap'] ) ? 1 : 0;
 			update_post_meta( $order_id, 'order-gift-wrap', $wc_gift_packaging );
 		endif;
-	}
-
-	/**
-	 * Admin note
-	 *
-	 * @param WC_Order $order
-	 */
-	function admin_note( WC_Order $order ) {
-
-		$status = get_post_meta( $order->get_order_number(), 'order-gift-wrap', true );
-
-		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-order-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-order-gift-wrap' );
-
-		$note = '<p><strong>' . __( 'Order Gift Wrap', 'tmsm-woocommerce-order-gift-wrap' ) . ':</strong> ' . $has_packaging . '</p>';
-		$note = apply_filters( 'tmsm_woocommerce_order_gift_wrap_admin_note', $note, $status );
-		echo $note;
-
-	}
-
-	/**
-	 * Order note
-	 *
-	 * @param WC_Order $order
-	 */
-	function order_note( WC_Order $order ) {
-
-		$status = get_post_meta( $order->get_order_number(), 'order-gift-wrap', true );
-
-		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-order-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-order-gift-wrap' );
-
-		$note = '<p><strong>' . __( 'Order Gift Wrap', 'tmsm-woocommerce-order-gift-wrap' ) . ':</strong> ' . $has_packaging . '</p>';
-		$note = apply_filters( 'tmsm_woocommerce_order_gift_wrap_order_note', $note, $status );
-		echo $note;
-
-	}
-
-	/**
-	 * Email note
-	 *
-	 * @param WC_Order $order
-	 */
-	function email_note( WC_Order $order ) {
-
-		$status = get_post_meta( $order->get_order_number(), 'order-gift-wrap', true );
-
-		$has_packaging = $status ? __( 'Yes', 'tmsm-woocommerce-order-gift-wrap' ) : __( 'No', 'tmsm-woocommerce-order-gift-wrap' );
-
-		$note = __( 'Order Gift Wrap', 'tmsm-woocommerce-order-gift-wrap' ) . ': ' . $has_packaging;
-		$note = apply_filters( 'tmsm_woocommerce_order_gift_wrap_email_note', $note, $status );
-		echo $note;
-
 	}
 
 }

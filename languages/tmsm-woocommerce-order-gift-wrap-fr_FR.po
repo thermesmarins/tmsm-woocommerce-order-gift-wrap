@@ -1,67 +1,65 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM WooCommerce Order Gift Wrap\n"
-"POT-Creation-Date: 2017-11-27 15:58+0100\n"
-"PO-Revision-Date: 2017-11-27 16:00+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2021-08-24 14:06+0200\n"
+"PO-Revision-Date: 2021-08-24 14:13+0200\n"
+"Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: https://github.com/thermesmarins/\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:37
+#: ../tmsm-woocommerce-order-gift-wrap.php:58
 #, php-format
 msgid "Gift wrap this order for %s?"
 msgstr "Emballage papier-cadeau pour cette commande pour %s ?"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:51
+#: ../tmsm-woocommerce-order-gift-wrap.php:77
 msgid "Order gift wrap cost"
 msgstr "Coût de l'emballage cadeau (par commande)"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:57
-msgid "Gift wrap message"
-msgstr "Message de l'emballage cadeau"
+#: ../tmsm-woocommerce-order-gift-wrap.php:83
+msgid "Gift wrap fee name"
+msgstr "Nom du supplément"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:59
+#: ../tmsm-woocommerce-order-gift-wrap.php:85
+msgid "Appears in emails and admin"
+msgstr "Apparaît dans les emails et dans le backoffice"
+
+#: ../tmsm-woocommerce-order-gift-wrap.php:89
+msgid "Gift wrap question"
+msgstr "Emballage papier-cadeau pour cette commande pour {price} ?"
+
+#: ../tmsm-woocommerce-order-gift-wrap.php:91
 msgid "Note: <code>{price}</code> will be replaced with the gift wrap cost."
 msgstr "Note : <code>{price}</code> sera remplacé par le coût de l'emballage cadeau."
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:61
+#: ../tmsm-woocommerce-order-gift-wrap.php:93
 msgid "The checkbox and label shown to the user on the frontend."
 msgstr "La case à cocher et le libellé seront affichés au public."
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:125
+#: ../tmsm-woocommerce-order-gift-wrap.php:155
 msgid "Free"
 msgstr "Gratuit"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:145
-msgid "Order gift wrap"
-msgstr "Emballer la commande dans un papier-cadeau"
+#~ msgid "Order gift wrap"
+#~ msgstr "Emballer la commande dans un papier-cadeau"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:171
-#: ../tmsm-woocommerce-order-gift-wrap.php:188
-#: ../tmsm-woocommerce-order-gift-wrap.php:205
-msgid "Yes"
-msgstr "Oui"
+#~ msgid "Yes"
+#~ msgstr "Oui"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:171
-#: ../tmsm-woocommerce-order-gift-wrap.php:188
-#: ../tmsm-woocommerce-order-gift-wrap.php:205
-msgid "No"
-msgstr "Non"
+#~ msgid "No"
+#~ msgstr "Non"
 
-#: ../tmsm-woocommerce-order-gift-wrap.php:173
-#: ../tmsm-woocommerce-order-gift-wrap.php:190
-#: ../tmsm-woocommerce-order-gift-wrap.php:207
-msgid "Order Gift Wrap"
-msgstr "Emballage papier-cadeau"
+#~ msgid "Order Gift Wrap"
+#~ msgstr "Emballage papier-cadeau"
 
 #~ msgid "date_after"
 #~ msgstr " ago"
@@ -461,9 +459,6 @@ msgstr "Emballage papier-cadeau"
 
 #~ msgid "Andere"
 #~ msgstr "Other"
-
-#~ msgid "Tippen Sie das Land ein"
-#~ msgstr "Please enter your country"
 
 #~ msgid "Geben Sie eine Straße ein."
 #~ msgstr "Please enter your street."

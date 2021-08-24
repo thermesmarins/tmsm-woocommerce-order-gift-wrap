@@ -1,3 +1,6 @@
+* New setting "fee name" to be displayed on emails and backend
+* Fix option were not saving
+
 ### 1.0.7: July 22nd, 2021
 * Fix checkbox was checked by default
 
