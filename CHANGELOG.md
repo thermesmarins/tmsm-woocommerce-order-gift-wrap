@@ -1,3 +1,5 @@
+* Fix check post var
+
 ### 1.0.8: August 24th, 2021
 * New setting "fee name" to be displayed on emails and backend
 * Fix option were not saving
